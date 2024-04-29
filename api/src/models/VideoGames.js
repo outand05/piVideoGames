@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique:true,
     },
     descripcion: {
       type: DataTypes.STRING,
@@ -24,6 +25,10 @@ module.exports = (sequelize) => {
     imagen: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isUrl: true, // Valida que la imagen sea una URL
+        len: [0, 255] // Restricción de longitud de la URL de la imagen
+      }
     },
     releasedDate: {
       type: DataTypes.STRING,
