@@ -1,4 +1,5 @@
 const { Router } = require("express");
+require('dotenv').config
 const router = Router();
 const { VideoGames, Genres } = require("../db");
 const { dataGenres } = require("../data/dataGenres");
@@ -50,7 +51,9 @@ router.post("/", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error interno del servidor");
+    res.status(500).send(
+      {error: error.message}
+    );
   }
 });
 
