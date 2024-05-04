@@ -1,16 +1,17 @@
 const { Router } = require("express");
-require('dotenv').config
+require("dotenv").config;
 const router = Router();
 const { VideoGames, Genres } = require("../db");
 const { dataGenres } = require("../data/dataGenres");
+
 router.post("/", async (req, res) => {
   try {
     // Obtener los nombres de los géneros disponibles
     const apiGenres = await dataGenres();
     const count = await Genres.count();
-    if (count === 0) {        
-          await Genres.bulkCreate(apiGenres);
-        }
+    if (count === 0) {
+      await Genres.bulkCreate(apiGenres);
+    }
     const {
       name,
       descripcion,
@@ -51,9 +52,7 @@ router.post("/", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send(
-      {error: error.message}
-    );
+    res.status(500).send({ error: error.message });
   }
 });
 

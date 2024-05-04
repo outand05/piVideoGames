@@ -13,7 +13,7 @@ const router = Router();
 router.use("/api", getApi);
 router.use("/genres", getGende);
 router.use("/game", getApiId);
-router.use("/newGame", postNewGame);
+router.use("/newVideoGame", postNewGame);
 router.use("/search", getName);
 
 module.exports = router;
